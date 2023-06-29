@@ -1,14 +1,16 @@
 let options = ["rock", "paper", "scissors"];
 
-// Returns a random value in the options array
+// Returns a random value from above array
+// which will serve as the computers choice against player.
 function getComputerChoice(choice) {
     indexValue = Math.floor(Math.random() * choice.length);
     return choice[indexValue].toString();
 }
 
+// Allows user to play 5 rounds in succession
 function game() {
     for (let i = 0; i < 5; i++) {
-        let playerInput= prompt('Enter your choice (rock, paper or scissor): ').toString();
+        let playerInput = window.prompt('Enter your choice (rock, paper or scissor): ');
         let computerInput = getComputerChoice(options).toString();
 
         function playRound(playerSelection, computerSelection) {
