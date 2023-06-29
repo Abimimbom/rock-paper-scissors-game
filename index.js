@@ -43,7 +43,7 @@ function game() {
                 console.log('You loose! Paper beats rock.');
                 console.log('Computer wins!');
             } else {
-                console.log('Something went wrong');
+                console.log('Invalid input!');
             }
         }
 
