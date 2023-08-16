@@ -105,6 +105,11 @@ body {
     box-shadow: 0px 0px 8px 2px var(--col-header);
 }
 
+.btn:active {
+    border: 2px solid var(--col-header);
+    box-shadow: 0px 0px 8px 2px var(--col-header);
+}
+
 .game-scores {
     display: flex;
     justify-content: space-between;
@@ -125,8 +130,10 @@ body {
     margin-bottom: .8rem;
 }
 
-.player-score,
-.computer-score {
+.player,
+.computer {
+    display: flex;
+    align-items: center;
     border: 2px solid var(--col-stroke);
     border-radius: 1.3125rem;
     box-shadow: 6px 6px 0 var(--col-drop-shadow);
@@ -139,6 +146,7 @@ body {
 .max-score {
     font-size: 1rem;
     color: var(--col-default);
+    margin-top: -30px;
 }
 
 .versus {
@@ -194,8 +202,8 @@ body {
         width: 100%;
     }
 
-    .player-score,
-    .computer-score {
+    .player,
+    .computer {
         font-size: 2.5rem;
     }
 
