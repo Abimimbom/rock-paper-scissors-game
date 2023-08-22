@@ -11,6 +11,8 @@ const choiceButtons = document.querySelectorAll('.btn');
 // Add event listener to choice buttons 
 choiceButtons.forEach(button => {
     button.addEventListener('click', () => {
+        document.querySelector('.special')?.classList.remove('special');
+        button.classList.add('special');
         const userChoice = button.getAttribute('data-choice');
         playGame(userChoice);
     });

@@ -100,7 +100,12 @@ body {
   cursor: pointer;
 }
 
-.btn:focus {
+.special {
+  border: 2px solid var(--col-header);
+  box-shadow: 0px 0px 8px 2px var(--col-header);
+}
+
+/* .btn:focus {
   border: 2px solid var(--col-header);
   box-shadow: 0px 0px 8px 2px var(--col-header);
 }
@@ -108,7 +113,7 @@ body {
 .btn:active {
   border: 2px solid var(--col-header);
   box-shadow: 0px 0px 8px 2px var(--col-header);
-}
+} */
 
 .game-scores {
   display: flex;
@@ -168,19 +173,18 @@ body {
 }
 
 .reset-button {
-    width: 100%;
-    border: 2px solid var(--col-stroke);
-    border-radius: 1.3125rem;
-    box-shadow: 6px 6px 0 var(--col-drop-shadow);
-    margin-top: 1.8rem;
-    background-color: var(--col-selection);
-    padding: 1.2rem 1.2rem;
-    color: var(--col-header);
-    font-size: 1rem;
-    font-family: var(--font-default);
-    line-height: 1.3rem;
+  width: 100%;
+  border: 2px solid var(--col-stroke);
+  border-radius: 1.3125rem;
+  box-shadow: 6px 6px 0 var(--col-drop-shadow);
+  margin-top: 1.8rem;
+  background-color: var(--col-selection);
+  padding: 1.2rem 1.2rem;
+  color: var(--col-header);
+  font-size: 1rem;
+  font-family: var(--font-default);
+  line-height: 1.3rem;
 }
-
 
 @media screen and (max-width: 450px) {
   .main {
