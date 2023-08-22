@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,15 @@
     <link rel="stylesheet" href="index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
-    <script src="index.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500;600;700&family=Press+Start+2P&display=swap"
+        rel="stylesheet">
 
     <title>TickTacToe Game</title>
 </head>
+
 <body>
+
     <main class="main">
         <div class="container">
             <div class="title">
@@ -23,27 +27,44 @@
             <div class="line-breaker"></div>
 
             <div class="player-selection">
-                <button class="btn">Rock</button>
-                <button class="btn">Paper</button>
-                <button class="btn">Scissor</button>
+                <button class="btn" data-choice="rock">Rock</button>
+                <button class="btn" data-choice="paper">Paper</button>
+                <button class="btn" data-choice="scissors">Scissor</button>
             </div>
 
             <div class="game-scores">
                 <div class="game-scores__player">
                     <h3>Player</h3>
-                    <div class="player-score">0<span class="max-score">/5</span></div>
+                    <div class="player">
+                        <span class="player-score">0</span>
+                        <span class="max-score">/5</span>
+                    </div>
                 </div>
                 <div class="versus">VS</div>
                 <div class="game-scores__computer">
                     <h3>Computer</h3>
-                    <div class="computer-score">0<span class="max-score">/5</span></div>
+                    <div class="computer">
+                        <span class="computer-score">0</span>
+                        <span class="max-score">/5</span>
+                    </div>
                 </div>
             </div>
 
+            <!-- <div class="line-breaker"></div> -->
+
             <div class="game-updates">
-                <p>You picked ROCK and Computer picked PAPER, ROCK beats PAPER. YOU WIN!!!</p>
+                <p>Game Starting...</p>
+            </div>
+
+            <!-- <div class="line-breaker"></div> -->
+
+            <div class="reset">
+                <button class="reset-button">Reset Game</button>
             </div>
         </div>
     </main>
+
+    <script src="index.js"></script>
 </body>
+
 </html>

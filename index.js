@@ -1,53 +1,67 @@
-const options = ["rock", "paper", "scissors"];
+const options = ['rock', 'paper', 'scissors'];
+let userScore = 0;
+let computerScore = 0;
 
-// Returns a random index (item) from above array
-// which will serve as the computers choice against player.
-function getComputerChoice(choice) {
-    indexValue = Math.floor(Math.random() * choice.length);
-    return choice[indexValue].toString();
+const playerScoreDisplay = document.querySelector('.player-score');
+const computerScoreDisplay = document.querySelector('.computer-score');
+const gameUpdates = document.querySelector('.game-updates');
+const resetButton = document.querySelector('.reset-button');
+const choiceButtons = document.querySelectorAll('.btn');
+
+// Add event listener to choice buttons 
+choiceButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const userChoice = button.getAttribute('data-choice');
+        playGame(userChoice);
+    });
+});
+
+resetButton.addEventListener('click', resetGame);
+
+function updateScore() {
+    playerScoreDisplay.textContent = userScore;
+    computerScoreDisplay.textContent = computerScore;
 }
 
+function resetGame() {
+    userScore = 0;
+    computerScore = 0;
+    playerScoreDisplay.textContent = 0;
+    computerScoreDisplay.textContent = 0;
+    gameUpdates.textContent = "Game Starting...";
+}
 
-// Allows user to play 5 rounds in succession
-// function game() {
-//     let playerInput = window.prompt('Enter your choice (rock, paper or scissor): ');
-//     let computerInput = getComputerChoice(options).toString();
+function getComputerChoice() {
+    return options[Math.floor(Math.random() * options.length)];
+}
 
-//     function playRound(playerSelection, computerSelection) {
-//         if (playerSelection === computerSelection || computerSelection === playerSelection) {
-//             console.log(`You entered ${playerInput} and computer chose ${computerInput}`);
-//             console.log('It\'s a tie! Try Again!');
-//         } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-//             console.log(`You entered ${playerInput} and computer chose ${computerInput}`);
-//             console.log('You win! Rock beats Scissors.');
-//             console.log('Player wins!');
-//         } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-//             console.log(`You entered ${playerInput} and computer chose ${computerInput}`);
-//             console.log('You win! Scissors beat Paper.');
-//             console.log('Player wins!');
-//         } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-//             console.log(`You entered ${playerInput} and computer chose ${computerInput}`);
-//             console.log('You win! Paper beats Rock.');
-//             console.log('Player wins!');
-//         } else if (computerSelection === 'rock' && playerSelection === 'scissors') {
-//             console.log(`You entered ${playerInput} and computer chose ${computerInput}`);
-//             console.log('You loose! Rock beats Scissors.');
-//             console.log('Computer wins!');
-//         } else if (computerSelection === 'scissor' && playerSelection === 'paper') {
-//             console.log(`You entered ${playerInput} and computer chose ${computerInput}`);
-//             console.log('You loose! Scissors beats Paper.')
-//             console.log('Computer wins!');
-//         }
-//         else if (computerSelection === 'paper' && playerSelection === 'rock') {
-//             console.log(`You entered ${playerInput} and computer chose ${computerInput}`);
-//             console.log('You loose! Paper beats Rock.');
-//             console.log('Computer wins!');
-//         } else {
-//             console.log('Invalid input! Try again!');
-//         }
-//     }
+function playGame(userChoice) {
+    if (userScore === 5 || computerScore === 5) {
+        gameUpdates.textContent = "Game over! Press the Reset Button to play again.";
+        return;
+    }
 
-//     playRound(playerInput.toLowerCase(), computerInput.toLowerCase());
-// }
+    const computerChoice = getComputerChoice();
+    const result = getWinner(userChoice, computerChoice);
 
-// game();
+    gameUpdates.textContent = `You chose ${userChoice.toUpperCase()}. Computer chose ${computerChoice.toUpperCase()}. ${result.toUpperCase()}`;
+    updateScore();
+
+    if (userScore === 5 || computerScore === 5) {
+        gameUpdates.textContent += ' Game over!';
+    }
+}
+
+function getWinner(user, computer) {
+    if (user === computer) {
+        return "It's a tie!";
+    } else if ((user === 'rock' && computer === 'scissors') ||
+        (user === 'paper' && computer === 'rock') ||
+        (user === 'scissors' && computer === 'paper')) {
+        userScore++;
+        return 'You win!';
+    } else {
+        computerScore++;
+        return 'Computer Wins!'
+    }
+}
